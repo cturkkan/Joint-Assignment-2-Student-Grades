@@ -1,5 +1,5 @@
 # Multiple Regression Model  
-1.Data Loading & Preprocessing 
+1. Data Loading & Preprocessing 
 The initial cells involve loading and inspecting the dataset, including showing the first few 
 rows with d3.head() and setting display options such as showing all columns with 
 pd.set_option('display.max_columns', None). 
