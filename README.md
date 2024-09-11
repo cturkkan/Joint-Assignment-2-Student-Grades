@@ -42,3 +42,49 @@ scoring="neg_mean_squared_error")))
 This applies cross-validation (10-fold) to ensure the model's performance is not overly 
 dependent on any single train-test split. It calculates the average RMSE across 10 
 different splits, giving a more robust evaluation.
+
+# Linear Regression on Student Performance Data
+This project implements a simple linear regression model using Python in a Jupyter Notebook 
+to predict student performance. It uses two different student datasets to predict academic 
+outcomes. 
+Project Description 
+The project merges two different student datasets and applies a linear regression model to 
+predict students' final exam scores (G3_y) based on their age. The datasets include various 
+demographic and academic variables, but this analysis focuses only on the age variable. 
+Installation Instructions 
+Requirements 
+* NumPy 
+* Pandas 
+* Matplotlib 
+* Seaborn 
+* Scikit-learn 
+Usage 
+1. Open the notebook and run it step by step. 
+2. Load the datasets: student-mat.csv and student-por.csv. 
+3. Train the model and analyze the results. 
+Steps Covered: 
+* Merging two student datasets 
+* Data preprocessing and exploration 
+* Training a linear regression model 
+* Visualizing the accuracy and performance of the model 
+* Calculating mean squared error (MSE) and prediction accuracy 
+Key Code and Explanations 
+1. Loading Data: Two different student datasets (student-mat.csv and student
+por.csv) are loaded using Pandas. 
+d1=pd.read_csv("student-mat.csv", sep=";") 
+d2=pd.read_csv("student-por.csv", sep=";") 
+2. Merging Data: The two datasets are merged based on common columns 
+d3 = pd.merge(d1, d2, on=["school", "sex", "age", "address", 
+"famsize", "Pstatus","Medu", "Fedu", "Mjob", "Fjob", "reason", 
+"nursery", "internet"]) 
+3. Training the Model: A linear regression model is trained using age (age) and final 
+exam score (G3_y). 
+X = d3[["age"]] 
+y = d3[["G3_y"]] 
+reg_model = LinearRegression().fit(X, y) 
+4. Model Visualization: The regression line is visualized using Seaborn. 
+sns.regplot(x=X, y=y, scatter_kws={'color': 'b', 's': 9}, ci=False, 
+color="r") 
+5. Error Calculation: Mean squared error (MSE) is calculated. 
+y_pred = reg_model.predict(X) 
+mean_squared_error(y, y_pred)
